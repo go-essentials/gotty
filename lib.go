@@ -30,7 +30,7 @@ import (
 	"os"
 )
 
-// IsTTY returns true if StdOut is attached to a terminal window, false otherwise.
+// IsTTY returns true if Stdout is attached to a terminal window, false otherwise.
 func IsTTY() bool {
 	if fileInfo, err := os.Stdout.Stat(); err == nil {
 		return fileInfo.Mode()&os.ModeCharDevice != 0
