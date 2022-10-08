@@ -145,7 +145,7 @@ func TestIsTTYFalse(t *testing.T) {
 		},
 	}
 
-	// EXECUTIONS.
+	// EXECUTION.
 	for _, scenario := range scenarios {
 		scenario := scenario // NOTE: Ensure that the t.Run function has the correct value when it's being executed.
 
@@ -185,7 +185,7 @@ func TestIsTTYTrue(t *testing.T) {
 		},
 	}
 
-	// EXECUTIONS.
+	// EXECUTION.
 	for _, scenario := range scenarios {
 		scenario := scenario // NOTE: Ensure that the t.Run function has the correct value when it's being executed.
 
