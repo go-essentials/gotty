@@ -23,44 +23,25 @@
 // =                OTHER DEALINGS IN THE SOFTWARE.
 // =====================================================================================================================
 
+// This file contains functions which should NOT be excluded from code coverage.
+// The functions defined in this class integrated with the underlying OS, and are impossible to test.
+
 // Package gotty implements functions to detect that a Go application is running inside a terminal.
 package gotty
 
-import (
-	"io/fs"
-	"os"
-)
+import "io/fs"
 
-// A subset around Go's standard os.File struct.
-type osFileWrapper interface {
-	Stat() (FsFileInfoWrapper, error)
-}
-
-// A subset of Go's standard fs.FileInfo interface.
-type FsFileInfoWrapper interface {
-	// Returns the file's mode.
-	Mode() fs.FileMode
-}
-
-// A wrapper around an os.File pointer.
-type osFile struct {
-	// The wrapped os.File pointer.
-	file *os.File
-}
-
-// A wrapper around a fs.FileInfo instance.
-type fsFileInfo struct {
-	// The wrapper fs.FileInfo instance.
-	fileInfo fs.FileInfo
-}
-
-// Wraps Stdout.
-var Stdout osFileWrapper = osFile{file: os.Stdout}
-
-// IsTTY returns true if Stdout is attached to a terminal window, false otherwise.
-func IsTTY() bool {
-	if fileInfo, err := Stdout.Stat(); err == nil {
-		return fileInfo.Mode()&os.ModeCharDevice != 0
+// Stat returns the FileInfo structure describing file.
+// If there is an error, it will be of type *PathError.
+func (file osFile) Stat() (FsFileInfoWrapper, error) {
+	if fileInfo, err := file.file.Stat(); err != nil {
+		return nil, err
+	} else {
+		return fsFileInfo{fileInfo: fileInfo}, nil
 	}
-	return false
+}
+
+// Mode returns the file's mode.
+func (fileInfo fsFileInfo) Mode() fs.FileMode {
+	return fileInfo.fileInfo.Mode()
 }
