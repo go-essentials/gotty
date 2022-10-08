@@ -68,77 +68,77 @@ func TestIsTTYFalse(t *testing.T) {
 		file tOsFile
 	}{
 		{
-			name: "When the `Stdout.Stat()` returns an error.",
+			name: "When the `Stdout.Stat()` returns an error, `false` should be returned.",
 			file: tOsFile{statErr: fs.ErrClosed},
 		},
 		{
-			name: "When the `Stdout` represents a `fs.ModeDir`.",
+			name: "When the `Stdout` represents a `fs.ModeDir`, `false` should be returned.",
 			file: tOsFile{
 				statFileInfo: tFsFileInfo{modeFileMode: fs.ModeDir},
 			},
 		},
 		{
-			name: "When the `Stdout` represents a `fs.ModeAppend`.",
+			name: "When the `Stdout` represents a `fs.ModeAppend`, `false` should be returned.",
 			file: tOsFile{
 				statFileInfo: tFsFileInfo{modeFileMode: fs.ModeAppend},
 			},
 		},
 		{
-			name: "When the `Stdout` represents a `fs.ModeExclusive`.",
+			name: "When the `Stdout` represents a `fs.ModeExclusive`, `false` should be returned.",
 			file: tOsFile{
 				statFileInfo: tFsFileInfo{modeFileMode: fs.ModeExclusive},
 			},
 		},
 		{
-			name: "When the `Stdout` represents a `fs.ModeTemporary`.",
+			name: "When the `Stdout` represents a `fs.ModeTemporary`, `false` should be returned.",
 			file: tOsFile{
 				statFileInfo: tFsFileInfo{modeFileMode: fs.ModeTemporary},
 			},
 		},
 		{
-			name: "When the `Stdout` represents a `fs.ModeSymlink`.",
+			name: "When the `Stdout` represents a `fs.ModeSymlink`, `false` should be returned.",
 			file: tOsFile{
 				statFileInfo: tFsFileInfo{modeFileMode: fs.ModeSymlink},
 			},
 		},
 		{
-			name: "When the `Stdout` represents a `fs.ModeDevice`.",
+			name: "When the `Stdout` represents a `fs.ModeDevice`, `false` should be returned.",
 			file: tOsFile{
 				statFileInfo: tFsFileInfo{modeFileMode: fs.ModeDevice},
 			},
 		},
 		{
-			name: "When the `Stdout` represents a `fs.ModeNamedPipe`.",
+			name: "When the `Stdout` represents a `fs.ModeNamedPipe`, `false` should be returned.",
 			file: tOsFile{
 				statFileInfo: tFsFileInfo{modeFileMode: fs.ModeNamedPipe},
 			},
 		},
 		{
-			name: "When the `Stdout` represents a `fs.ModeSocket`.",
+			name: "When the `Stdout` represents a `fs.ModeSocket`, `false` should be returned.",
 			file: tOsFile{
 				statFileInfo: tFsFileInfo{modeFileMode: fs.ModeSocket},
 			},
 		},
 		{
-			name: "When the `Stdout` represents a `fs.ModeSetuid`.",
+			name: "When the `Stdout` represents a `fs.ModeSetuid`, `false` should be returned.",
 			file: tOsFile{
 				statFileInfo: tFsFileInfo{modeFileMode: fs.ModeSetuid},
 			},
 		},
 		{
-			name: "When the `Stdout` represents a `fs.ModeSetgid`.",
+			name: "When the `Stdout` represents a `fs.ModeSetgid`, `false` should be returned.",
 			file: tOsFile{
 				statFileInfo: tFsFileInfo{modeFileMode: fs.ModeSetgid},
 			},
 		},
 		{
-			name: "When the `Stdout` represents a `fs.ModeSticky`.",
+			name: "When the `Stdout` represents a `fs.ModeSticky`, `false` should be returned.",
 			file: tOsFile{
 				statFileInfo: tFsFileInfo{modeFileMode: fs.ModeSticky},
 			},
 		},
 		{
-			name: "When the `Stdout` represents a `fs.ModeIrregular`.",
+			name: "When the `Stdout` represents a `fs.ModeIrregular`, `false` should be returned.",
 			file: tOsFile{
 				statFileInfo: tFsFileInfo{modeFileMode: fs.ModeIrregular},
 			},
@@ -178,7 +178,7 @@ func TestIsTTYTrue(t *testing.T) {
 		file tOsFile
 	}{
 		{
-			name: "When the `Stdout` represents a `fs.ModeCharDevice`.",
+			name: "When the `Stdout` represents a `fs.ModeCharDevice`, `true` should be returned.",
 			file: tOsFile{
 				statFileInfo: tFsFileInfo{modeFileMode: fs.ModeCharDevice},
 			},
